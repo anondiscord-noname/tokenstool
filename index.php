@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    <input type="hidden" id="is_login" value="<?php echo isset($_SESSION["user"]) ? "true" : "false"; ?>">
+    <input type="hidden" id="is_login" value="false">
     <script src="script.js"></script>
 </body>
 
