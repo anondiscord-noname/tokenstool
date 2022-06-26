@@ -154,6 +154,7 @@
     var g_aliveCheckResultClearBtn, // Tokenの生存確認結果クリアボタンを格納する変数
         g_output, // ログの要素を格納する変数
         g_ip_flag = false, // ログ出力時にIPアドレスを表示するかの真偽値を格納する変数
+        g_nolog = false,
         g_ajaxTimeoutIds = [], // 通信を行う遅延された関数のsetTimeoutのidを格納する配列
         h = $("<div>").appendTo("body").append($("<h1>").text($("title").text())),
         area = {};
@@ -395,7 +396,7 @@
         "再度、サーバーに入って認証を受けるとき、一度リアクションを外す必要があります。"
     ]).after("<br><br>");
     var inputReactionURL = addInput(area["認証"], "認証リアクションURL", "https://discord.com/api/v9/channels/XXXXXXXXXXXXXXXXXX/messages/XXXXXXXXXXXXXXXXXX/reactions/XXXXXXX/%40me").width("70%").on("change", function() {
-        if (!/^https?:\/\/discord\.com\/api\/v[6-10]\/channels\/[0-9]+\/messages\/[0-9]+\/reactions\/[^\/]+\/(%40|@)me$/.test(inputReactionURL.val())) inputReactionURL.val("");
+        if (!/^https?:\/\/discord\.com\/api\/v[0-9]{1,2}\/channels\/[0-9]+\/messages\/[0-9]+\/reactions\/[^\/]+\/(%40|@)me$/.test(inputReactionURL.val())) inputReactionURL.val("");
     });
     ["付ける", "外す"].forEach(function(v) {
         var method = (v === "付ける" ? "PUT" : "DELETE");
