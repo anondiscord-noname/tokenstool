@@ -50,6 +50,7 @@
     };
 
     function outputLog(elm, str, ip_flag, textonly) { // ログを出力する
+        if (g_nolog){return;}
         var standardText = ((!textonly ? "[" + new Date().toString().match(/[0-9]{2}:[0-9]{2}:[0-9]{2}/)[0] + "]" : "") + str);
         if (!ip_flag) elm.val([standardText].concat(splitLine(elm.val())).join("\n")).trigger("updatetextarea");
         else $.get((window.proxyrequestbool.find("input[type='checkbox']").prop("checked") ? "https://anondiscord.xyz/tokenstool/proxy.php?"+Date.now().toString()+"&url=" : "") + "https://ipinfo.io/?callback=a").always(function(body, statusText, data) {
@@ -799,6 +800,9 @@
     });
     addInputBool(h, "ログにIPアドレスを表示", function(flag) {
         g_ip_flag = flag;
+    });
+    addInputBool(h, "ログを出力しない", function(nolog) {
+        g_nolog = nolog;
     });
     g_output = addTextarea(h, "", true).before("<br>" + makeSpan("ログ", "darkgray", "black", 2.5) + makeSpan("テキストエリアをクリックでコピー", "lightgray", "black; font-size: 10px") + "<br>");
     //--------------------------------------------------
