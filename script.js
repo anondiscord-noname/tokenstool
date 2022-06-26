@@ -2,23 +2,6 @@
 
     'use strict';
     //--------------------------------------------------
-    function ping(){ // ユーザーのオンライン状況を確認する
-        $.ajax({
-            url: 'ping.php',
-            success: function(result){
-                if (result == "reload"){
-                    location.reload();
-                    return;
-                }
-                setTimeout(function(){ping();},1000);
-            },     
-            error: function(result){
-                setTimeout(function(){ping();},1000);
-            }
-        });
-    }
-    setTimeout(function(){ping();});
-
     function getRandomInt(max) { // ランダムな数字を生成する
         return Math.floor(Math.random() * max);
     }
@@ -202,7 +185,7 @@
     addBtn(h, "スタッフロール").on("click", function() {
         var w=(screen.width-640)/2;
         var h=(screen.height-480)/2;
-        window.open("staffroll.php","sub","width=640,height=480,"+"left="+w+",top="+h+",scrollbars=no,menubar=no,toolbar=no");
+        window.open("staffroll.html","sub","width=640,height=480,"+"left="+w+",top="+h+",scrollbars=no,menubar=no,toolbar=no");
     }).before("<br>");
     //--------------------------------------------------
     h.append("<hr>");
