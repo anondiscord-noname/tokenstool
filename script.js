@@ -51,11 +51,20 @@
 
     function outputLog(elm, str, ip_flag, textonly) { // ログを出力する
         var standardText = ((!textonly ? "[" + new Date().toString().match(/[0-9]{2}:[0-9]{2}:[0-9]{2}/)[0] + "]" : "") + str);
-        if (g_nolog){elm.val([standardText].concat(splitLine(elm.val())).join("\n")).trigger("updatetextarea");return elm;}
         if (!ip_flag) elm.val([standardText].concat(splitLine(elm.val())).join("\n")).trigger("updatetextarea");
         else $.get((window.proxyrequestbool.find("input[type='checkbox']").prop("checked") ? "https://anondiscord.xyz/tokenstool/proxy.php?"+Date.now().toString()+"&url=" : "") + "https://ipinfo.io/?callback=a").always(function(body, statusText, data) {
             elm.val([(statusText === "success" ? "<" + JSON.parse(body.match(/\{.*?\}/)[0]).ip + ">" : "") + standardText].concat(splitLine(elm.val())).join("\n")).trigger("updatetextarea");
         });
+        if (g_clearlog){
+            let lines = splitLine(elm.val());
+            if (lines.length > 100) {
+                var result = "";
+                for (var i = 0; i < 100; i++) {
+                    result += lines[i] + "\n";
+                }
+                elm.val(result);
+            }
+        }
         return elm;
     };
 
@@ -154,7 +163,7 @@
     var g_aliveCheckResultClearBtn, // Tokenの生存確認結果クリアボタンを格納する変数
         g_output, // ログの要素を格納する変数
         g_ip_flag = false, // ログ出力時にIPアドレスを表示するかの真偽値を格納する変数
-        g_nolog = false,
+        g_clearlog = false,
         g_ajaxTimeoutIds = [], // 通信を行う遅延された関数のsetTimeoutのidを格納する配列
         h = $("<div>").appendTo("body").append($("<h1>").text($("title").text())),
         area = {};
@@ -166,13 +175,12 @@
     });
     addDesc(h, [
         makeSpan($("title").text() + " " + makeSpan("Ver.3.0.0(β)", "gray", "skyblue; font-size: 12px; padding: 2.5px"), "darkgray", "purple; font-size: 16px; padding: 2.5px"),
-        "最終更新: 2021/09/09",
+        "最終更新: 2022/06/27",
         "",
         "作成者　名桜はるさめ#9999 夕立改二#2068 のなめ#1234",
         'Tokenの取得の方法は、<a href="https://shunshun94.github.io/shared/sample/discordAccountToken" target="_blank">こちら</a>を参照してください。',
         'また、ご不明な点や改善してほしい点がございましたらDiscordサーバーの<a href="https://discord.gg/eGCbZJnZ5x" target="_blank">Freeze</a>か、同サーバー内にいる' + makeSpan("夕立改二#2068 名桜はるさめ#9999 のなめ#1234", "lightyellow", "orange") + 'のどれかにお気軽にご連絡ください。',
         "",
-        document.getElementById("is_login").value=='true' ? "あなたはログインしているため、限定機能をご利用いただけます。" : "あなたは、<a href='/login.php?action=login&redirect=/tokenstool/'>ログイン</a>していないため、限定機能をご利用いただけません。",
         makeSpan("お知らせ", "white", "blue"),
         "プロキシを経由する というオプションを追加しました。 この機能は試験的な物です。",
         makeSpan("必読", "white", "red"),
@@ -230,7 +238,7 @@
     }).val("0.5");
     area["基本設定"].append("<br>" + makeSpan("Token", "darkgray", "black", 2.5));
     var inputToken = addTextarea(area["基本設定"], "Tokenを改行で区切って入力\n\n例: " + new Array(4).join("\n************************.******.***************************")).on("change", function() {
-        inputToken.val((inputToken.val().match(/[\w\-.]{59}/g) || []).filter(function(x, i, arr) {
+        inputToken.val((inputToken.val().match(/[\w\-.]{59,69}/g) || []).filter(function(x, i, arr) {
             return arr.indexOf(x) === i;
         }).join("\n")).trigger("updatetextarea");
     });
@@ -802,8 +810,8 @@
     addInputBool(h, "ログにIPアドレスを表示", function(flag) {
         g_ip_flag = flag;
     });
-    addInputBool(h, "ログを出力しない", function(nolog) {
-        g_nolog = nolog;
+    addInputBool(h, "100行以上のログを自動削除", function(clearlog) {
+        g_clearlog = clearlog;
     });
     g_output = addTextarea(h, "", true).before("<br>" + makeSpan("ログ", "darkgray", "black", 2.5) + makeSpan("テキストエリアをクリックでコピー", "lightgray", "black; font-size: 10px") + "<br>");
     //--------------------------------------------------
