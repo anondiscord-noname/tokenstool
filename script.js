@@ -174,7 +174,7 @@
         });
     });
     addDesc(h, [
-        makeSpan($("title").text() + " " + makeSpan("Ver.3.0.0(β)", "gray", "skyblue; font-size: 12px; padding: 2.5px"), "darkgray", "purple; font-size: 16px; padding: 2.5px"),
+        makeSpan($("title").text() + " " + makeSpan("Ver.3.1.0", "gray", "skyblue; font-size: 12px; padding: 2.5px"), "darkgray", "purple; font-size: 16px; padding: 2.5px"),
         "最終更新: 2022/06/27",
         "",
         "作成者　名桜はるさめ#9999 夕立改二#2068 のなめ#1234",
@@ -182,7 +182,10 @@
         'また、ご不明な点や改善してほしい点がございましたらDiscordサーバーの<a href="https://discord.gg/eGCbZJnZ5x" target="_blank">Freeze</a>か、同サーバー内にいる' + makeSpan("夕立改二#2068 名桜はるさめ#9999 のなめ#1234", "lightyellow", "orange") + 'のどれかにお気軽にご連絡ください。',
         "",
         makeSpan("お知らせ", "white", "blue"),
-        "プロキシを経由する というオプションを追加しました。 この機能は試験的な物です。",
+        "トークンの新しい長さに対応しました",
+        "ログに「100行以上のログを自動削除」を追加しました",
+        "リアクション付与が使えない問題があったので修正しました。",
+        "その他、細かい修正等",
         makeSpan("必読", "white", "red"),
         "以下の事項を守らないとTokenが電話認証要求などによって使用できなくなる可能性があります。",
         "・DMを送信しない" + makeSpan("(絶対)", "pink", "red"),
