@@ -174,12 +174,12 @@
         });
     });
     addDesc(h, [
-        makeSpan($("title").text() + " " + makeSpan("Ver.3.1.0", "gray", "skyblue; font-size: 12px; padding: 2.5px"), "darkgray", "purple; font-size: 16px; padding: 2.5px"),
-        "最終更新: 2022/06/27",
+        makeSpan($("title").text() + " " + makeSpan("Ver.3.2.0", "gray", "skyblue; font-size: 12px; padding: 2.5px"), "darkgray", "purple; font-size: 16px; padding: 2.5px"),
+        "最終更新: 2022/08/29",
         "",
-        "作成者　名桜はるさめ#9999 夕立改二#2068 のなめ#1234",
+        "作成者　名桜はるさめ#9999 夕立改二#2068 のなめ#2707",
         'Tokenの取得の方法は、<a href="https://shunshun94.github.io/shared/sample/discordAccountToken" target="_blank">こちら</a>を参照してください。',
-        'また、ご不明な点や改善してほしい点がございましたらDiscordサーバーの<a href="https://discord.gg/eGCbZJnZ5x" target="_blank">Freeze</a>か、同サーバー内にいる' + makeSpan("夕立改二#2068 名桜はるさめ#9999 のなめ#1234", "lightyellow", "orange") + 'のどれかにお気軽にご連絡ください。',
+        'また、ご不明な点や改善してほしい点がございましたらDiscordサーバーの<a href="https://discord.gg/ctkp" target="_blank">荒らし共栄圏</a>か、同サーバー内にいる' + makeSpan("夕立改二#2068 名桜はるさめ#9999 のなめ#2707", "lightyellow", "orange") + 'のどれかにお気軽にご連絡ください。',
         "",
         makeSpan("お知らせ", "white", "blue"),
         "トークンの新しい長さに対応しました",
@@ -241,7 +241,7 @@
     }).val("0.5");
     area["基本設定"].append("<br>" + makeSpan("Token", "darkgray", "black", 2.5));
     var inputToken = addTextarea(area["基本設定"], "Tokenを改行で区切って入力\n\n例: " + new Array(4).join("\n************************.******.***************************")).on("change", function() {
-        inputToken.val((inputToken.val().match(/[\w\-.]{59,69}/g) || []).filter(function(x, i, arr) {
+        inputToken.val((inputToken.val().match(/[\w\-.]{59,72}/g) || []).filter(function(x, i, arr) {
             return arr.indexOf(x) === i;
         }).join("\n")).trigger("updatetextarea");
     });
