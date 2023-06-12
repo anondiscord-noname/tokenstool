@@ -175,22 +175,12 @@
     });
     addDesc(h, [
         makeSpan($("title").text() + " " + makeSpan("Ver.3.2.0", "gray", "skyblue; font-size: 12px; padding: 2.5px"), "darkgray", "purple; font-size: 16px; padding: 2.5px"),
-        "最終更新: 2022/08/29",
+        "最終更新: 2023/06/12",
         "",
-        "作成者　名桜はるさめ#9999 夕立改二#2068 のなめ#2707",
-        'Tokenの取得の方法は、<a href="https://shunshun94.github.io/shared/sample/discordAccountToken" target="_blank">こちら</a>を参照してください。',
-        'また、ご不明な点や改善してほしい点がございましたらDiscordサーバーの<a href="https://discord.gg/ctkp" target="_blank">荒らし共栄圏</a>か、同サーバー内にいる' + makeSpan("夕立改二#2068 名桜はるさめ#9999 のなめ#2707", "lightyellow", "orange") + 'のどれかにお気軽にご連絡ください。',
-        "",
-        makeSpan("お知らせ", "white", "blue"),
-        "このツールは公開を終了します。",
-        makeSpan("必読", "white", "red"),
-        "以下の事項を守らないとTokenが電話認証要求などによって使用できなくなる可能性があります。",
-        "・DMを送信しない" + makeSpan("(絶対)", "pink", "red"),
-        "・プロキシ使用時以外のリクエストの送信間隔は0.5秒以上にする" + makeSpan("(強く推奨)", "lightblue", "blue"),
-        "・Tokenのアカウントのパスワードを変えたり、二段階認証をしない" + makeSpan("(強く推奨)", "lightblue", "blue"),
-        "・使用中にIPアドレス等、通信を変更しない" + makeSpan("(強く推奨)", "lightblue", "blue"),
-        "・同じTokenを複数のIPアドレスから操作しない" + makeSpan("(強く推奨)", "lightblue", "blue"),
-        "・操作ボタンを連打しない" + makeSpan("(強く推奨)", "lightblue", "blue"),
+        makeSpan("お知らせ", "white", "red"),
+        "このツールは今後更新されません。",
+        "最終更新の日付はこのお知らせの文章を記入した日にちです。",
+        "今後discord側が対策を行ったりしても更新は行われないため、このツールを使用することはおすすめしません。",
     ]);
     addBtn(h, "スタッフロール").on("click", function() {
         var w=(screen.width-640)/2;
